@@ -1,35 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import imgFondo from "/hero_img.jpg";
+import imgTranslate from "/logo.svg";
+import ContainersText from "./components/ContainersText";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="bg-fondoHome md: min-h-screen">
+      <section>
+        <div className="h-44 relative">
+          <img className="absolute top-0 md:w-full" src={imgFondo} alt="" />
+        </div>
+        <div className="flex justify-center items-center w-full">
+          <img
+            src={imgTranslate}
+            className="text-wh absolute top-6 font-semibold text-2xl"
+            alt=""
+          />
+        </div>
+      </section>
+      <ContainersText></ContainersText>
+    </div>
+  );
 }
 
-export default App
+export default App;
