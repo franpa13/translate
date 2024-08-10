@@ -4,6 +4,7 @@ import Textarea from "@mui/joy/Textarea";
 import Snackbar from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
+import CircularProgress from '@mui/material/CircularProgress';
 import Alert from "@mui/material/Alert";
 
 import Accordion from "@mui/material/Accordion";
@@ -287,6 +288,7 @@ export default function TextArea({ primer }) {
             variant="contained"
             type="submit"
           >
+                
             Translate
           </Button>
         </div>
