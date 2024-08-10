@@ -4,7 +4,8 @@ import Textarea from "@mui/joy/Textarea";
 import Snackbar from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import CircularProgress from '@mui/material/CircularProgress';
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 import Alert from "@mui/material/Alert";
 
 import Accordion from "@mui/material/Accordion";
@@ -20,6 +21,7 @@ import TranslateIcon from "@mui/icons-material/Translate";
 import axios from "axios";
 export default function TextArea({ primer }) {
   const [openError, setOpenError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [openCopy, setOpenCopy] = useState(false);
   const [openErrorResponse, setOpenEerrorResponse] = useState(false);
   const {
@@ -126,7 +128,7 @@ export default function TextArea({ primer }) {
         const response = await axios.get(
           `https://api.mymemory.translated.net/get?q=${paraTraducir}&langpair=${btnActual.abreviatura}|${btnActualTwo.abreviatura}`
         );
-        console.log(response, "esto es la resp");
+
         if (response.status == 200) {
           if (response.data.responseStatus == 200) {
             let traduccionFinal = response.data.responseData.translatedText;
@@ -148,6 +150,7 @@ export default function TextArea({ primer }) {
       console.log(e);
     }
   };
+
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -288,17 +291,11 @@ export default function TextArea({ primer }) {
             variant="contained"
             type="submit"
           >
-                
             Translate
           </Button>
         </div>
       </form>
-      <Snackbar
-        open={openError}
-        autoHideDuration={4000}
-        onClose={handleClose}
- 
-      >
+      <Snackbar open={openError} autoHideDuration={4000} onClose={handleClose}>
         <Alert
           onClose={handleClose}
           severity="info"
@@ -309,12 +306,7 @@ export default function TextArea({ primer }) {
         </Alert>
       </Snackbar>
 
-      <Snackbar
-        open={openCopy}
-        autoHideDuration={4000}
-        onClose={handleClose}
-    
-      >
+      <Snackbar open={openCopy} autoHideDuration={4000} onClose={handleClose}>
         <Alert
           onClose={handleClose}
           severity="success"
@@ -329,7 +321,6 @@ export default function TextArea({ primer }) {
         open={openErrorResponse}
         autoHideDuration={4000}
         onClose={handleClose}
-      
       >
         <Alert
           onClose={handleClose}
@@ -340,6 +331,12 @@ export default function TextArea({ primer }) {
           Add two languages differents please!
         </Alert>
       </Snackbar>
+      <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={loading}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
     </div>
   );
 }
