@@ -20,8 +20,8 @@ function App() {
         </div>
       </section>
       <ContainersText></ContainersText>
-      <p className="text-borderTextArea absolute bottom-0 right-0 left-0 text-center mb-40 md:mb-10 flex justify-center items-center">
-        <CreateIcon></CreateIcon>Created by Francisco Paredes
+      <p className="text-borderTextArea md:absolute md:bottom-0 md:right-0 md:left-0 w-full pb-4 text-center md:mb-10 md:flex md:justify-center md:items-center">
+        <CreateIcon></CreateIcon>Created by Francisco Javier Paredes
       </p>
     </div>
   );
